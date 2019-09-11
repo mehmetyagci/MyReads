@@ -5,21 +5,16 @@ import './App.css'
 import BookShelf from './BookShelf'
 import Books from './Books'
 import _ from "lodash";
+import { Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class BooksApp extends Component {
   
   constructor(props) { 
     super(props); 
     this.state = { 
-     /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: true,
-    books: [],
-    filteredBooks: []
+      books: [],
+      filteredBooks: []
     }; 
     this.onChange = this.onChange.bind(this); // binding this because onChange is called in another scope
   }   
@@ -61,7 +56,7 @@ renderBooks() {
 	return Object.entries(_.groupBy(this.state.books,  'shelf')).map(([shelf, shelfBooks]) => {
         return (
             <div key={shelf}>              
-				<BookShelf name={shelf} shelfBooks={shelfBooks} onChangeBookShelf={this.changeBookShelf}  />
+				      <BookShelf name={shelf} shelfBooks={shelfBooks} onChangeBookShelf={this.changeBookShelf}  />
             </div>
         )
     })
@@ -84,10 +79,33 @@ changeBookShelf = (bookId, shelf) => {
   render() {   
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <div className="search-books">
+
+
+      <Route exact path='/' render={() => 
+        (
+          <div className="list-books">
+          <div className="list-books-title">
+            <h1>MyReads</h1>
+          </div>
+          <div className="list-books-content">
+            <div>
+            {this.renderBooks()}
+            </div>
+          </div>
+          <div className="open-search">
+            <Link  
+            to='/search'>Add a book</Link>
+          </div>
+        </div>
+        )
+      } />
+      <Route path='/search' render={() => (
+        <div className="search-books">
             <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+              <Link 
+                to='/'
+                className="close-search" 
+                >Close</Link>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -102,24 +120,13 @@ changeBookShelf = (bookId, shelf) => {
               </div>
             </div>
             <div className="search-books-results">
-			  <Books books={this.state.filteredBooks} onChangeBookShelf={this.changeBookShelf}/>                    
+			      <Books books={this.state.filteredBooks} onChangeBookShelf={this.changeBookShelf}/>                    
             </div>
           </div>
-        ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-          		{this.renderBooks()}
-              </div>
-            </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-          </div>
-        )}
+
+
+        
+      )} />
       </div>
     )
   }
