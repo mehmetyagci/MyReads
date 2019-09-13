@@ -43,12 +43,13 @@ class BooksApp extends Component {
     }
   }  
 
-  changeBookShelf = (bookId, shelf) => {
-    debugger;
-    const currentBook = this.state.books.find(x => x.id === bookId);
-    console.log('currentBook', currentBook);
-    console.log('shelf', shelf)
-    BooksAPI.update (currentBook, shelf).then (apiResponse => {
+  changeBookShelf = (book, shelf) => {
+    //debugger;
+    //const bookId = book.id;
+    //const currentBook = this.state.books.find(x => x.id === bookId);
+    console.log('changeBookShelf:book', book);
+    console.log('changeBookShelf:shelf', shelf)
+    BooksAPI.update (book, shelf).then (apiResponse => {
       console.log ('App-changeBookShelf-apiResponse', apiResponse);
       this.booksAPIgetAll();
       /*

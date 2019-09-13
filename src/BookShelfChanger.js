@@ -15,9 +15,9 @@ class BookShelfChanger extends React.Component {
     this.setState({
       	bookShelf: event.target.value
     }, function() {
-     // console.log("BookShelfChanger:Book", this.props.book)
-	  //console.log("BookShelfChanger:handleChange1=", this.state.bookShelf)
-      this.props.changeBookShelf(this.props.book.id, this.state.bookShelf);
+      console.log("BookShelfChanger:Book", this.props.book)
+	    console.log("BookShelfChanger:BookShelf=", this.state.bookShelf)
+      this.props.changeBookShelf(this.props.book, this.state.bookShelf);
     });
   }
   
