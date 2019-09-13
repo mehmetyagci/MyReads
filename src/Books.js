@@ -2,15 +2,15 @@ import React from 'react'
 import Book from './Book'
 
 function Books(props) {
-    const { books, onChangeBookShelf } = props;
-    console.log("Books:props", props)
+    const { books, changeBookShelf } = props;
+    //console.log("Books:props", props)
   
-return (
+    return (
     		<ol className="books-grid">
                 {
                		 books && books.map((book, index) => (
                			 <li key={index}>
-           					 <Book book={book} onChangeBookShelf={onChangeBookShelf} />
+           					 <Book book={book} changeBookShelf={changeBookShelf} />
                 		 </li>						
                 	))
                 }
