@@ -15,9 +15,7 @@ class BooksApp extends Component {
     super(props);
     this.state = {
       books: [],
-      filteredBooks: [],
     };
-    this.onChange = this.onChange.bind(this); // binding this because onChange is called in another scope
   }
 
   componentDidMount = () => {
@@ -26,16 +24,16 @@ class BooksApp extends Component {
 
   booksAPIgetAll () {
     try {
-      BooksAPI.getAll().then(apiResponse => {
-        console.log ('App-booksAPIgetAll', apiResponse);
+        BooksAPI.getAll().then(apiResponse => {
+        //console.log ('App-booksAPIgetAll', apiResponse);
         this.setState (
           {
             books: apiResponse,
           },
           function () {
-            console.log ('App.js-componentDidMount1-this.state.books',this.state.books);
-            const shelfGroups = _.groupBy (this.state.books, 'shelf');
-            console.log ('App.js-componentDidMount2-shelfGroups', shelfGroups);
+            //console.log ('App.js-componentDidMount1-this.state.books',this.state.books);
+            //const shelfGroups = _.groupBy (this.state.books, 'shelf');
+            //console.log ('App.js-componentDidMount2-shelfGroups', shelfGroups);
           }
         );
       });
@@ -45,49 +43,21 @@ class BooksApp extends Component {
     }
   }  
 
-
-  onChange (event) {
-    const value = event.target.value.toLowerCase ();
-    //console.log ('onChange1:', value);
-    BooksAPI.search (value, 10).then (apiResponse => {
-      //console.log ('App:search:onChange2', apiResponse);
-      //console.log ('typeof:', typeof apiResponse);
-      //console.log ('IsArray:', Array.isArray (apiResponse));
-
-      if (Array.isArray (apiResponse)) {
-        this.setState (
-          {
-            filteredBooks: apiResponse,
-          },
-          function () {
-            //console.log ('App:search:onChange3', this.state.filteredBooks);
-          }
-        );
-      } 
-      else {
-        this.setState (
-          {
-            filteredBooks: [],
-          },
-          function () {
-            //console.log ('App:search:onChange4', this.state.filteredBooks);
-          }
-        );
-      }
-    });
-  }    
-
   changeBookShelf = (bookId, shelf) => {
-    const currentBook = this.state.books.filter (x => x.id === bookId);
-    console.log ('currentBook', currentBook);
+    debugger;
+    const currentBook = this.state.books.find(x => x.id === bookId);
+    console.log('currentBook', currentBook);
+    console.log('shelf', shelf)
     BooksAPI.update (currentBook, shelf).then (apiResponse => {
-      console.log ('App.js-changeBookShelf-apiResponse', apiResponse);
+      console.log ('App-changeBookShelf-apiResponse', apiResponse);
+      this.booksAPIgetAll();
+      /*
       this.setState (previousState => ({
         books: previousState.books.map (
-          item =>
-            item.id === bookId ? Object.assign (item, {shelf: shelf}) : item
+          item =>  item.id === bookId ? Object.assign (item, {shelf: shelf}) : item
         ),
       }));
+      */
     });
   };
 
@@ -104,7 +74,7 @@ class BooksApp extends Component {
         <Route
           path="/search"
           render={() => (
-            <SearchBooks books={this.state.filteredBooks} onChange={this.onChange} changeBookShelf={this.changeBookShelf} />
+            <SearchBooks changeBookShelf={this.changeBookShelf} />
           )}
         />
       </div>

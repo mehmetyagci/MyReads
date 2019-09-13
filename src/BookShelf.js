@@ -3,7 +3,7 @@ import Books from './Books'
 
 function BookShelf(props) {
     const { name,  shelfBooks, changeBookShelf } = props;
-    //console.log("BookShelf:props", props)
+   // console.log("BookShelf:props", props)
   
   	return (
                 <div className="bookshelf">

@@ -5,7 +5,7 @@ class BookShelfChanger extends React.Component {
   constructor(props) {
     super(props);
     //console.log("BookShelfChanger:props", this.props);
-    const { book, changeBookShelf } = props	
+    //const { book, changeBookShelf } = props	
     this.state = {bookShelf: this.props.book.shelf};
     this.handleChange = this.handleChange.bind(this);
   }
