@@ -3,11 +3,11 @@ import React, {Component} from 'react';
 import Books from './Books';
 import {Link} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
+import PropTypes from 'prop-types';
 
 class SearchBooks extends Component {
   constructor (props) {
     super (props);
-
     this.state = {
       searchTerm: '',
       filteredBooks: [],
@@ -98,5 +98,10 @@ class SearchBooks extends Component {
     );
   } // end of render
 } // end of component
+
+SearchBooks.propTypes = {
+  myReadBooks: PropTypes.array,
+  changeBookShelf: PropTypes.func.isRequired,
+};
 
 export default SearchBooks;
