@@ -3,9 +3,8 @@ import Books from './Books'
 
 function BookShelf(props) {
     const { name,  shelfBooks, changeBookShelf } = props;
-    // console.log("BookShelf:props", props)
     
-    function shelfNameCorrection(shelfName) 
+    function findCorrenctShelfName(shelfName) 
     {
       if(name === "currentlyReading") 
       {
@@ -24,11 +23,10 @@ function BookShelf(props) {
         return name;
       }
     } 
-    // some comments
 
   	return (
         <div className="bookshelf">
-          <h2 className="bookshelf-title">{shelfNameCorrection(name)}</h2>
+          <h2 className="bookshelf-title">{findCorrenctShelfName(name)}</h2>
           <div className="bookshelf-books">
             <Books books={shelfBooks} changeBookShelf={changeBookShelf}/>                    
           </div>

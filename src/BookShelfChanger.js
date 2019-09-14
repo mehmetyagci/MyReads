@@ -2,15 +2,12 @@ import React, { Component }  from 'react'
 
 class BookShelfChanger extends React.Component {
   constructor(props) {
-    super(props);
-    // console.log("BookShelfChanger:props", this.props);
-    // const { book, changeBookShelf } = props	
+    super(props);   
     this.state = {bookShelf: this.props.book.shelf ? this.props.book.shelf : 'none'};
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    //console.log("event:", event)
     this.setState({
       	bookShelf: event.target.value
     }, function() {
