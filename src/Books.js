@@ -3,7 +3,7 @@ import Book from './Book';
 
 function Books (props) {
   const {books, changeBookShelf} = props;
-  console.log ('Books:props', props);
+//  console.log ('Books:props', props);
 
   return (
     <ol className="books-grid">

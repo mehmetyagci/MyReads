@@ -4,7 +4,7 @@ import _ from 'lodash';
 import BookShelf from './BookShelf';
 
 function ListBooks(props) {
-    console.log("ListBooks:props:", props)
+    //console.log("ListBooks:props:", props)
     const { books, changeBookShelf } = props;
 
     const shelfBooks = Object.entries(_.groupBy(books, 'shelf'));

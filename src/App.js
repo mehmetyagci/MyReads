@@ -3,11 +3,8 @@ import React, {Component} from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import ListBooks from './ListBooks';
-import BookShelf from './BookShelf';
-import Books from './Books';
 import _ from 'lodash';
 import {Route} from 'react-router-dom';
-import {Link} from 'react-router-dom';
 import SearchBooks from './SearchBooks'
 
 class BooksApp extends Component {
@@ -47,8 +44,8 @@ class BooksApp extends Component {
     //debugger;
     //const bookId = book.id;
     //const currentBook = this.state.books.find(x => x.id === bookId);
-    console.log('changeBookShelf:book', book);
-    console.log('changeBookShelf:shelf', shelf)
+    //console.log('changeBookShelf:book', book);
+    //console.log('changeBookShelf:shelf', shelf)
     BooksAPI.update (book, shelf).then (apiResponse => {
       console.log ('App-changeBookShelf-apiResponse', apiResponse);
       this.booksAPIgetAll();
@@ -75,7 +72,7 @@ class BooksApp extends Component {
         <Route
           path="/search"
           render={() => (
-            <SearchBooks changeBookShelf={this.changeBookShelf} />
+            <SearchBooks changeBookShelf={this.changeBookShelf} myReadBooks={this.state.books} />
           )}
         />
       </div>
