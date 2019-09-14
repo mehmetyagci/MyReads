@@ -4,9 +4,9 @@ import * as BooksAPI from './BooksAPI'
 class BookShelfChanger extends React.Component {
   constructor(props) {
     super(props);
-    //console.log("BookShelfChanger:props", this.props);
+    console.log("BookShelfChanger:props", this.props);
     //const { book, changeBookShelf } = props	
-    this.state = {bookShelf: this.props.book.shelf};
+    this.state = {bookShelf: this.props.book.shelf ? this.props.book.shelf : 'none'};
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -15,8 +15,8 @@ class BookShelfChanger extends React.Component {
     this.setState({
       	bookShelf: event.target.value
     }, function() {
-      //console.log("BookShelfChanger:Book", this.props.book)
-	    //console.log("BookShelfChanger:BookShelf=", this.state.bookShelf)
+      console.log("BookShelfChanger:Book", this.props.book)
+	    console.log("BookShelfChanger:BookShelf=", this.state.bookShelf)
       this.props.changeBookShelf(this.props.book, this.state.bookShelf);
     });
   }
@@ -24,7 +24,7 @@ class BookShelfChanger extends React.Component {
   render () {
     return (
           <div className="book-shelf-changer">
-              <select value={this.props.book.shelf ? this.props.book.shelf : 'none'}   onChange={this.handleChange}  >
+              <select value={this.state.bookShelf}  onChange={this.handleChange}  >
                 <option value="move" disabled="disabled">Move to...</option>
                 <option value="currentlyReading" disabled={this.state.bookShelf === "currentlyReading" ? true : null}>Currently Reading</option>
                 <option value="wantToRead" disabled={this.state.bookShelf === "wantToRead" ? true : null}>Want to Read</option>
