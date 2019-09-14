@@ -29,7 +29,7 @@ class BookShelfChanger extends React.Component {
                 <option value="currentlyReading" disabled={this.state.bookShelf === "currentlyReading" ? true : null}>Currently Reading</option>
                 <option value="wantToRead" disabled={this.state.bookShelf === "wantToRead" ? true : null}>Want to Read</option>
                 <option value="read" disabled={this.state.bookShelf === "read" ? true : null}>Read</option>
-                <option value="none">None</option>
+                <option value="none" disabled={!(this.state.bookShelf === "currentlyReading" || this.state.bookShelf === "wantToRead" || this.state.bookShelf === "read")  ? true : null}>None</option>
               </select>
     		</div>
     	)

@@ -21,7 +21,7 @@ class SearchBooks extends Component {
   onChange (event) {
     const value = event.target.value.toLowerCase ();
     console.log ('onChange1:', value);
-    if (value.length <= 0) {
+    if (value === undefined || value.trim().length <= 0) {
       this.setState ({
         searchTerm: value,
         filteredBooks: [],
@@ -77,9 +77,9 @@ class SearchBooks extends Component {
   }
 
   renderSearchedBooks () {
-    console.log ('renderSearchedBooks');
+    //console.log ('renderSearchedBooks');
     if (this.state.filteredBooks.length > 0) {
-      console.log ('if');
+      //console.log ('if');
       return (
         <div className="search-books-results">
           <Books
@@ -89,9 +89,9 @@ class SearchBooks extends Component {
         </div>
       );
     } else if (this.state.searchTerm.length > 0) {
-      console.log ('else');
-      console.log ('this.state.searchTerm:', this.state.searchTerm);
-      return <div className="search-books-results">No books find!</div>;
+      //console.log ('else');
+      //console.log ('this.state.searchTerm:', this.state.searchTerm);
+      return <div className="search-books-results"><h4>No result for: "{this.state.searchTerm}"</h4></div>;
     }
   }
 

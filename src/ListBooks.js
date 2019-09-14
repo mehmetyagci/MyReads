@@ -4,7 +4,7 @@ import _ from 'lodash';
 import BookShelf from './BookShelf';
 
 function ListBooks(props) {
-    //console.log("ListBooks:props:", props)
+    console.log("ListBooks:props:", props)
     const { books, changeBookShelf } = props;
 
     const shelfBooks = Object.entries(_.groupBy(books, 'shelf'));
@@ -24,7 +24,7 @@ function ListBooks(props) {
     return (
         <div className="list-books">
             <div className="list-books-title">
-                <h1>MyReads</h1>
+                <h1>My Reads</h1>
             </div>
             <div className="list-books-content">
                 <div>
