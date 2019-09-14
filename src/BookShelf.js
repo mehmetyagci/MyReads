@@ -24,7 +24,6 @@ function BookShelf(props) {
         return name;
       }
     } 
-    // some comments goes here.
 
   	return (
         <div className="bookshelf">
