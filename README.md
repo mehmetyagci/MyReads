@@ -1,7 +1,7 @@
 # My Reads Project
 
 My Reads is the first project for the Udacity React Nanodegree program. This is a book tracking app allows you to select and categorize books you have read, are currently reading, or want to read. The app communicates with a Udacity provided backend to generate a collection of "shelves" that display books in different categories. Books can be moved from shelf to shelf depending on user preference. The app also features a book search functionality where users can search books then add it to their existing shelves.
-some comments
+
 ## TL;DR
 
 To get started developing right away:
