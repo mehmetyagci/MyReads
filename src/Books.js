@@ -1,9 +1,9 @@
 import React from 'react';
 import Book from './Book';
+import PropTypes from 'prop-types';
 
 function Books (props) {
   const {books, changeBookShelf} = props;
-//  console.log ('Books:props', props);
 
   return (
     <ol className="books-grid">
@@ -16,5 +16,10 @@ function Books (props) {
     </ol>
   );
 }
+
+Books.propTypes = {
+  books: PropTypes.array,
+  changeBookShelf: PropTypes.func.isRequired,
+};
 
 export default Books;

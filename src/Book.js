@@ -1,9 +1,9 @@
 import React from 'react';
 import BookShelfChanger from './BookShelfChanger';
+import PropTypes from 'prop-types';
 
 function Book (props) {
   const {book, changeBookShelf} = props;
-  //console.log("Book:props:book", book)
 
   return book !== undefined
     ? <div className="book">
@@ -30,5 +30,10 @@ function Book (props) {
       </div>
     : <div />;
 }
+
+Book.propTypes = {
+  books: PropTypes.object,
+  changeBookShelf: PropTypes.func.isRequired,
+};
 
 export default Book;

@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import ListBooks from './ListBooks';
-import _ from 'lodash';
 import {Route} from 'react-router-dom';
 import SearchBooks from './SearchBooks';
 

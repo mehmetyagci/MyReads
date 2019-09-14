@@ -4,23 +4,21 @@ import Books from './Books';
 import {Link} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 
-
 class SearchBooks extends Component {
   constructor (props) {
     super (props);
-    console.log ('SearchBooks:props:', props);
+
     this.state = {
       searchTerm: '',
       filteredBooks: [],
-      error: false
+      error: false,
     };
     this.onChange = this.onChange.bind (this); // binding this because onChange is called in another scope
   }
 
   onChange (event) {
     const value = event.target.value.toLowerCase ();
-    console.log ('onChange1:', value);
-    if (value === undefined || value.trim().length <= 0) {
+    if (value === undefined || value.trim ().length <= 0) {
       this.setState ({
         searchTerm: value,
         filteredBooks: [],
@@ -28,36 +26,34 @@ class SearchBooks extends Component {
       return;
     }
 
-    BooksAPI.search (value, 10).then (searchedBooks => {
-      if (Array.isArray (searchedBooks)) {
-        searchedBooks.map (searchedBook => {
-          if (this.props.myReadBooks.length > 0) {
-            const myRead = this.props.myReadBooks.find (
-              y => y.id === searchedBook.id
-            );
-            if (myRead !== undefined) {
-              searchedBook['shelf'] = myRead.shelf;
+    BooksAPI.search (value, 10)
+      .then (searchedBooks => {
+        const tempMyBooks = this.props.myReadBooks;
+        if (Array.isArray (searchedBooks)) {
+          searchedBooks.forEach (function (searchedBook) {
+            if (tempMyBooks.length > 0) {
+              const myRead = tempMyBooks.find (y => y.id === searchedBook.id);
+              if (myRead !== undefined) {
+                searchedBook['shelf'] = myRead.shelf;
+              }
             }
-          }
-        });
-        this.setState (
-          {
+          });
+
+          this.setState ({
             searchTerm: value,
             filteredBooks: searchedBooks,
-          }
-        );
-      } else {
-        this.setState (
-          {
+          });
+        } else {
+          this.setState ({
             searchTerm: value,
             filteredBooks: [],
-          }
-        );
-      }
-    }).catch(err => {
-      console.log (err);
-      this.setState ({error: true});
-    })
+          });
+        }
+      })
+      .catch (err => {
+        console.log (err);
+        this.setState ({error: true});
+      });
   }
 
   renderSearchedBooks () {
@@ -71,7 +67,11 @@ class SearchBooks extends Component {
         </div>
       );
     } else if (this.state.searchTerm.length > 0) {
-      return <div className="search-books-results"><h4>No result for: "{this.state.searchTerm}"</h4></div>;
+      return (
+        <div className="search-books-results">
+          <h4>No result for: "{this.state.searchTerm}"</h4>
+        </div>
+      );
     }
   }
 
