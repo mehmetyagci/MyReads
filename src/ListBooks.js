@@ -5,8 +5,17 @@ import BookShelf from './BookShelf';
 import PropTypes from 'prop-types';
 
 function ListBooks (props) {
-  const {books, changeBookShelf} = props;
+  const {books, changeBookShelf } = props;
+  console.log("books:",books)
+ 
+
+
   const shelfBooks = Object.entries (_.groupBy (books, 'shelf'));
+  //var orderedShelfBooks = _.sortBy(shelfBooks => shelfBooks) 
+  console.log("shelfBooks:",shelfBooks)
+
+  
+
   const arrangedBooks = shelfBooks.map (([shelf, shelfBooks]) => {
     return (
       <div key={shelf}>

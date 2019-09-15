@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class BookShelfChanger extends Component {
   constructor (props) {
     super (props);
+    //console.log('BookShelfChanger:props', props)
     this.state = {
       bookShelf: this.props.book.shelf ? this.props.book.shelf : 'none',
     };
