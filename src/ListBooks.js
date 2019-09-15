@@ -6,15 +6,12 @@ import PropTypes from 'prop-types';
 
 function ListBooks (props) {
   const {books, changeBookShelf } = props;
-  console.log("books:",books)
- 
+  // console.log("books:",books)
 
-
+  var priorityIndex = {currentlyReading: 1, wantToRead: 2, read: 3 };
+  books.sort((a, b) =>  priorityIndex[a.shelf] - priorityIndex[b.shelf]);
+  // console.log("orderedBooks", books);
   const shelfBooks = Object.entries (_.groupBy (books, 'shelf'));
-  //var orderedShelfBooks = _.sortBy(shelfBooks => shelfBooks) 
-  console.log("shelfBooks:",shelfBooks)
-
-  
 
   const arrangedBooks = shelfBooks.map (([shelf, shelfBooks]) => {
     return (

@@ -12,7 +12,7 @@ class BooksApp extends Component {
       myBooks: [],
       searchBooks: [],
       error: false,
-    };   
+    };
   }
 
   componentDidMount = () => {
@@ -21,7 +21,7 @@ class BooksApp extends Component {
 
   getAllBooksFromAPI () {
     BooksAPI.getAll ()
-      .then (apiAllBooksResponse => {      
+      .then (apiAllBooksResponse => {
         this.setState ({
           myBooks: apiAllBooksResponse,
         });
@@ -35,60 +35,52 @@ class BooksApp extends Component {
   onChangeBookShelf = (book, shelf) => {
     BooksAPI.update (book, shelf)
       .then (apiUpdateResponse => {
-        console.log ('update:result:', apiUpdateResponse);
-
-        let shelfMarkedMyBooks = this.state.myBooks.map (
-          myBook =>
-            myBook.id === book.id ? {...myBook, ...{shelf: shelf}} : myBook
-        );
-        console.log ('onChangeBookShelf:myBooks', this.state.myBooks);
-        this.setState ({myBooks: shelfMarkedMyBooks});
-    
-        let shelfMarkedSearchBooks = this.state.searchBooks.map (
-          searchBook =>
-            searchBook.id === book.id
-              ? {...searchBook, ...{shelf: shelf}}
-              : searchBook
-        );
-        this.setState ({searchBooks: shelfMarkedSearchBooks});
+        // console.log ('update:result:', apiUpdateResponse);
       })
       .catch (err => {
         console.log (err);
         this.setState ({error: true});
       });
- 
 
-   
+    if (shelf === 'none') 
+    {
+      this.setState(prevState => ({
+        myBooks: prevState.myBooks.filter(b => b.id !== book.id)
+      }));
+    } 
+    else 
+    {
+     book.shelf = shelf;
+      this.setState(prevState => ({
+        myBooks: prevState.myBooks.filter(b => b.id !== book.id).concat(book)
+      }));
+    }
+    // console.log ('onChangeBookShelf:this.state.myBooks', this.state.myBooks);
   };
 
   onSearchBooks = searchTerm => {
     BooksAPI.search (searchTerm, 10)
       .then (apiSearchedBooks => {
-        console.log ('apiSearchedBooks', apiSearchedBooks);
+        // console.log ('apiSearchedBooks', apiSearchedBooks);
         if (Array.isArray (apiSearchedBooks)) {
-          console.log ('search1');
-
-          
+          // console.log ('search1');
           let newItems = apiSearchedBooks.map (apiSearchedBook => {
             this.state.myBooks.map (myBook => {
               if (myBook.id === apiSearchedBook.id) {
                 apiSearchedBook.shelf = myBook.shelf;
-                console.log (
-                  'apiSearchedBook.shelf',
-                  myBook.title + ' ' + apiSearchedBook.shelf
-                );
+                // console.log ('apiSearchedBook.shelf', myBook.title + ' ' + apiSearchedBook.shelf);
               }
               return myBook;
             });
             return apiSearchedBook;
           });
-          console.log ('newItems:', newItems);
+          // console.log ('newItems:', newItems);
           //this.setState ({filteredBooks: newItems});
           this.setState ({
             searchBooks: newItems,
           });
         } else {
-          console.log ('search2');
+          // console.log ('search2');
           this.setState ({
             searchBooks: [],
           });
