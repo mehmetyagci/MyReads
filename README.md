@@ -22,6 +22,6 @@ $ npm start
 ```
 **A new browser window should automatically open displaying the app. If it doesn't, navigate to http://localhost:3000/ in your browser**
 
-![Load Screen](src/screenshots/load-app.png "load screen")
+![Load Screen](https://github.com/mehmetyagci/MyReads/blob/master/screenshots/load-app.png "load screen")
 
 
