@@ -2,9 +2,11 @@
 
 My Reads is the first project for the Udacity React Nanodegree program. This is a book tracking app allows you to select and categorize books you have read, are currently reading, or want to read. 
 
-## Installation and Launch
+## Demo
 
-You can run a hosted version of the app at [mehmetyagci.github.io/MyReads/](https://mehmetyagci.github.io/MyReads/)
+You can see a live demo of the project [here](https://mehmetyagci.github.io/MyReads/)
+
+## Installation and Launch
 
 The project uses Node.js and the Create-React-App starter. If you do not have Node >= 6.x installed, you can download it here: [Node.js](https://nodejs.org/en/)
 
