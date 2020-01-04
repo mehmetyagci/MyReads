@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/MyReads/static/css/main.841dd37c.chunk.css",
-    "main.js": "/MyReads/static/js/main.e1fc71ec.chunk.js",
-    "main.js.map": "/MyReads/static/js/main.e1fc71ec.chunk.js.map",
-    "runtime~main.js": "/MyReads/static/js/runtime~main.55bd6041.js",
-    "runtime~main.js.map": "/MyReads/static/js/runtime~main.55bd6041.js.map",
-    "static/js/2.2adb645b.chunk.js": "/MyReads/static/js/2.2adb645b.chunk.js",
-    "static/js/2.2adb645b.chunk.js.map": "/MyReads/static/js/2.2adb645b.chunk.js.map",
+    "main.css": "/MyReads/static/css/main.b90b999d.chunk.css",
+    "main.js": "/MyReads/static/js/main.be20e771.chunk.js",
+    "main.js.map": "/MyReads/static/js/main.be20e771.chunk.js.map",
+    "runtime~main.js": "/MyReads/static/js/runtime~main.dd0a0817.js",
+    "runtime~main.js.map": "/MyReads/static/js/runtime~main.dd0a0817.js.map",
+    "static/js/2.80d5b10f.chunk.js": "/MyReads/static/js/2.80d5b10f.chunk.js",
+    "static/js/2.80d5b10f.chunk.js.map": "/MyReads/static/js/2.80d5b10f.chunk.js.map",
     "index.html": "/MyReads/index.html",
-    "precache-manifest.b65f13bc4b77aacf4f92716196221715.js": "/MyReads/precache-manifest.b65f13bc4b77aacf4f92716196221715.js",
+    "precache-manifest.11df3157fa4ef0bf274c955962fc5ae9.js": "/MyReads/precache-manifest.11df3157fa4ef0bf274c955962fc5ae9.js",
     "service-worker.js": "/MyReads/service-worker.js",
-    "static/css/main.841dd37c.chunk.css.map": "/MyReads/static/css/main.841dd37c.chunk.css.map",
-    "static/media/App.css": "/MyReads/static/media/arrow-drop-down.78c6f53b.svg"
+    "static/css/main.b90b999d.chunk.css.map": "/MyReads/static/css/main.b90b999d.chunk.css.map",
+    "static/media/App.css": "/MyReads/static/media/arrow-drop-down.9d4e3f36.svg"
   }
 }
