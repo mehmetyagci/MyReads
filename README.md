@@ -4,6 +4,8 @@ My Reads is the first project for the Udacity React Nanodegree program. This is 
 
 ## Installation and Launch
 
+You can run a hosted version of the app at [mehmetyagci.github.io/MyReads/](https://mehmetyagci.github.io/MyReads/)
+
 The project uses Node.js and the Create-React-App starter. If you do not have Node >= 6.x installed, you can download it here: [Node.js](https://nodejs.org/en/)
 
 1. To install the application clone this git repository
